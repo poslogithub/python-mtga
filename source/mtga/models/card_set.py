@@ -159,7 +159,7 @@ class Deck(Pool):
     def generate_library(self, owner_id=-1):
         library = Library(self.pool_name, self.deck_id, owner_id, -1)
         for card in self.cards:
-            game_card = GameCard(card.name, card.pretty_name, card.cost, card.color_identity, card.card_type,
+            game_card = GameCard(card.name, card.pretty_name, card.kana_name, card.cost, card.color_identity, card.card_type,
                                        card.sub_types, card.super_types, card.set, card.set_number, card.mtga_id, owner_id, -1)
             library.cards.append(game_card)
         return library
