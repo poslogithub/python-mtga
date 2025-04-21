@@ -8,12 +8,13 @@ COLORMAP = {
 
 class Card(object):
 
-    def __init__(self, name="", pretty_name="", cost=None, color_identity=None, card_type="", sub_types="", super_types="",
+    def __init__(self, name="", pretty_name="", kana_name="", cost=None, color_identity=None, card_type="", sub_types="", super_types="",
                  abilities=None, set_id="", rarity="", collectible=True, set_number=-1, mtga_id=-1,
                  is_token=False, is_secondary_card=False, is_rebalanced=False, is_digital_only=False):
         self.name = name
         self.set = set_id
         self.pretty_name = pretty_name
+        self.kana_name = kana_name
         if cost is None:
             cost = []
         self.cost = cost
@@ -82,6 +83,7 @@ class Card(object):
             "set": self.set,
             "colors": self.colors,
             "pretty_name": self.pretty_name,
+            "kana_name": self.kana_name,
             "cost": self.cost,
             "color_identity": self.color_identity,
             "card_type": self.card_type,
@@ -139,8 +141,8 @@ class Card(object):
 
 class GameCard(Card):
 
-    def __init__(self, name, pretty_name, cost, color_identity, card_type, sub_types, super_types, set_id, rarity, set_number, mtga_id, owner_seat_id, game_id=-1):
-        super().__init__(name, pretty_name, cost, color_identity, card_type, sub_types, super_types, set_id, rarity, set_number, mtga_id)
+    def __init__(self, name, pretty_name, kana_name, cost, color_identity, card_type, sub_types, super_types, set_id, rarity, set_number, mtga_id, owner_seat_id, game_id=-1):
+        super().__init__(name, pretty_name, kana_name, cost, color_identity, card_type, sub_types, super_types, set_id, rarity, set_number, mtga_id)
         self.game_id = game_id
         self.previous_iids = []
         self.owner_seat_id = owner_seat_id
@@ -162,6 +164,7 @@ class GameCard(Card):
         new_card = all_mtga_cards.find_one(card_id)
         self.name = new_card.name
         self.pretty_name = new_card.pretty_name
+        self.kana_name = new_card.kana_name
         self.cost = new_card.cost
         self.card_type = new_card.card_type
         self.sub_types = new_card.sub_types

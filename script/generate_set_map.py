@@ -108,10 +108,10 @@ def generate_set_map(loc, cards, enums, set_name):
                 abilities.append(aid)
                 all_abilities[aid] = text
             indentation_length = len("{} = Card(".format(card_name_class_cased_suffixed))
-            # params: name,    pretty_name, cost,            color_identity, card_type,  sub_types, super_types, set_id, rarity,        set_number, mtga_id
+            # params: name,    pretty_name, kana_name, cost, color_identity, card_type,  sub_types, super_types, set_id, rarity,        set_number, mtga_id
             # ex:     "a_b_c", "A B C",     ['3', 'W', 'W'], ['W'],          "Creature", "Angel",  "AKH",   "Mythic Rare", 1,          64801
-            # name, pretty_name, cost, color_identity, card_type, sub_types, super_types, set_id, rarity, set_number, mtga_id
-            new_card_str = '{} = Card(name="{}", pretty_name="{}", cost={},\n' \
+            # name, pretty_name, kana_name, cost, color_identity, card_type, sub_types, super_types, set_id, rarity, set_number, mtga_id
+            new_card_str = '{} = Card(name="{}", pretty_name="{}", kana_name="{}", cost={},\n' \
                            '{{}}color_identity={}, card_type="{}", sub_types="{}", super_types="{}",\n' \
                            '{{}}abilities={}, set_id="{}", rarity="{}", collectible={}, set_number={},\n' \
                            '{{}}mtga_id={})'.format(

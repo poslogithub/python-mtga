@@ -60,6 +60,14 @@ def get_win_data_location():
 def del_ruby(s):
     return re.sub("（.+?）", "", re.sub("<.+?>", "", s))
 
+def title_to_kana(s):
+    s = re.sub("<.+?>", "", s)
+    s = re.sub(".（", "", s)
+    s = re.sub("）", "", s)
+    return re.sub("（.+?）", "", re.sub("<.+?>", "", s))
+
+
+
 data_location = get_data_location()
 
 json_filepaths = {"CardDatabase": ""}
@@ -102,8 +110,10 @@ for set_name in listed_cardsets:
         try:
             if card["TitleId"]:
                 card_title = del_ruby(loc_map[card["TitleId"]])
+                kana_name = title_to_kana(loc_map[card["TitleId"]])
             else:
                 card_title = ""
+                kana_name = ""
             card_name_class_cased = re.sub('[^0-9a-zA-Z_]', '', card_title)
             card_name_class_cased_suffixed = card_name_class_cased
             card_suffix = 2
@@ -240,7 +250,7 @@ for set_name in listed_cardsets:
                     card_abilities.append(aid)
                     all_abilities[aid] = text
 
-            new_card_obj = Card(name=card_name_snake_cased, pretty_name=card_title, cost=cost,
+            new_card_obj = Card(name=card_name_snake_cased, pretty_name=card_title, kana_name=kana_name, cost=cost,
                                 color_identity=color_identity, card_type=card_types, sub_types=sub_types, super_types=super_types, 
                                 abilities=card_abilities, set_id=set_id, rarity=rarity, collectible=collectible,
                                 set_number=set_number, mtga_id=grp_id, 
