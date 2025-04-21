@@ -119,7 +119,7 @@ def sqlite2json(sqlite_filepath):
 
 if __name__ == "__main__":
     from json import dump
-    abilities, cards, loc, enums = sqlite2json(r'C:\Program Files\Wizards of the Coast\MTGA\MTGA_Data\Downloads\Raw\Raw_CardDatabase_8150374e402d563dbf688fb838e44629.mtga')
+    abilities, cards, loc, enums = sqlite2json(r'C:\Program Files\Wizards of the Coast\MTGA\MTGA_Data\Downloads\Raw\Raw_CardDatabase_252a56d6e7f5de84051785bf7dbb6d49.mtga')
 
     with open("abilities.json", "w", encoding='utf-8') as f:
        dump(abilities, f, indent=2, ensure_ascii=False)
