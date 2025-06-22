@@ -109,3 +109,7 @@ abilities.json
 cards.json
 enums.json
 loc.json
+Raw_CardDatabase_cd2453dbad375992da5ce57a87044f40.mtga
+enums.json
+example.db
+test/aqlite3_test_4.py
